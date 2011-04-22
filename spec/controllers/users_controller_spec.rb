@@ -34,9 +34,10 @@ describe UsersController do
       response.should have_selector("h1>img", :class => "gravatar")
     end
     
-  end
+  end #get show
 
   describe "GET 'new'" do
+    
     it "should be successful" do
       get :new
       response.should be_success
@@ -67,7 +68,7 @@ describe UsersController do
       response.should have_selector("input[id='user_password_confirmation'][type='password']")
     end
     
-  end
+  end #get new
   
   describe "POST 'create'" do
     
@@ -76,7 +77,7 @@ describe UsersController do
       before(:each) do
         @attr = { :name => "", :email => "", :password => "",
                   :password_confirmation => "" }
-      end
+      end 
       
       it "should not create a user" do
         lambda do
@@ -94,7 +95,7 @@ describe UsersController do
         response.should render_template('new')
       end
       
-    end
+    end #failure
     
     describe "success" do
       
@@ -119,8 +120,13 @@ describe UsersController do
         flash[:success].should =~ /welcome to the sample app/i
       end
       
-    end
+      it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_signed_in
+      end
+      
+    end #success
     
-  end
+  end #post create
 
-end
+end #UsersController
