@@ -49,22 +49,22 @@ describe UsersController do
     
     it "should have a name field" do
       get :new
-      response.should have_selector("input[name='user[name]'][type='text']")
+      response.should have_selector("input[id='user_name'][type='text']")
     end
     
     it "should have an email field" do
       get :new
-      response.should have_selector("input[name='user[email]'][type='text']")
+      response.should have_selector("input[id='user_email'][type='text']")
     end
     
     it "should have a password field" do
       get :new
-      response.should have_selector("input[name='user[password]'][type='password']")
+      response.should have_selector("input[id='user_password'][type='password']")
     end
     
     it "should have a password confirmation field" do
       get :new
-      response.should have_selector("input[name='user[password_confirmation]'][type='password']")
+      response.should have_selector("input[id='user_password_confirmation'][type='password']")
     end
     
   end
