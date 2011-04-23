@@ -45,26 +45,33 @@ describe "LayoutLinks" do
     
     it "should have a signin link" do
       visit root_path
-      #controller.should_not be_signed_in
       response.should have_selector("a", :href => signin_path, :content => "Sign in")
     end
     
   end #not signed in
-  
+
   describe "when signed in" do
     
     before(:each) do
+      #print "BEFORE SIGN IN-"
       @user = Factory(:user)
+      #print @user.inspect
+      #print User.find_by_email(@user.email).inspect
       visit signin_path
+      #print flash.inspect
+      #print @user.email, @user.password
       fill_in :email,    :with => @user.email
       fill_in :password, :with => @user.password
       click_button
-      print "SIGNED IN"
+      #print flash.inspect
+      #print "SIGNED IN"
     end
     
     it "should have a signout link" do
+      #print controller.inspect
+      #print flash.inspect
+      #print "Before Visit"
       visit root_path
-      #controller.should be_signed_in
       response.should have_selector("a", :href => signout_path, :content => "Sign out")
     end
     

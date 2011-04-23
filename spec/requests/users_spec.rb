@@ -19,7 +19,7 @@ describe "Users" do
         end.should_not change(User, :count)
       end
       
-    end
+    end #failure
     
     describe "success" do
       
@@ -37,8 +37,38 @@ describe "Users" do
         end.should change(User, :count).by(1)
       end
       
-    end
+    end #success
     
-  end
+  end #sign up
+  
+  describe "sign in" do
+    
+    describe "failure" do
+      
+      it "should have errors" do 
+        @user = Factory(:user)
+        visit signin_path
+        fill_in :email,    :with => @user.email
+        fill_in :password, :with => @user.password
+        click_button
+        flash[:error].should_not be_empty
+      end
+      
+    end #failure
+    
+    describe "success" do
+      
+      it "should have no errors" do
+        @user = Factory(:user)
+        visit signin_path
+        fill_in :email,    :with => @user.email
+        fill_in :password, :with => @user.password
+        click_button
+        flash[:error].should be_empty
+      end
+      
+    end #success
+    
+  end #sign in
   
 end

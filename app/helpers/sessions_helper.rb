@@ -19,7 +19,7 @@ module SessionsHelper
   end
   
   def signed_in?
-    print "signed in user = '" + current_user.inspect + "'"
+    #print "signed in user = '" + current_user.inspect + "'"
     !current_user.nil?
   end
   
