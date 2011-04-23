@@ -14,7 +14,12 @@ group :test do
 	gem 'webrat', '0.7.1' 
 	gem 'spork', '0.9.0.rc4'
 	gem 'factory_girl_rails', '1.0'
-end 
+end
+
+group :development, :test do
+	gem 'database_cleaner', '0.6.7' 
+end
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
