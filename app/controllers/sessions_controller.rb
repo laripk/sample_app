@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   
   def new
+    print " cA", User.count
     @title = "Sign in"
   end
   

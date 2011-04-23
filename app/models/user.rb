@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate(email, submitted_password)
+    print " ua", User.count
     user = find_by_email(email)
     if user.nil?
       [nil, "Email not found."]
@@ -51,6 +52,7 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate_with_salt(id, cookie_salt)
+    print " uas", User.count
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end

@@ -1,3 +1,4 @@
+<% print " vA", User.count %>
 <h1>Sign in</h1>
 <%= form_for(:session, :url => sessions_path) do |f| %>
 	<div class="field">
@@ -13,3 +14,4 @@
 	</div>
 <% end %>
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<% print " vB", User.count %>
