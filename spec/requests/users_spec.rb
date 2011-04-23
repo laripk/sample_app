@@ -49,7 +49,7 @@ describe "Users" do
         @user = Factory(:user)
         visit signin_path
         fill_in :email,    :with => @user.email
-        fill_in :password, :with => @user.password
+        fill_in :password, :with => "invalid"
         click_button
         flash[:error].should_not be_empty
       end
@@ -59,8 +59,13 @@ describe "Users" do
     describe "success" do
       
       it "should have no errors" do
+        print User.count
         @user = Factory(:user)
+        print "user in db=", !User.find_by_email(@user.email).nil?
+        print User.count
         visit signin_path
+        print "user in db=", !User.find_by_email(@user.email).nil?
+        print User.count
         fill_in :email,    :with => @user.email
         fill_in :password, :with => @user.password
         click_button
