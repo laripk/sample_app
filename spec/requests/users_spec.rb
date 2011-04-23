@@ -66,12 +66,15 @@ describe "Users" do
         visit signin_path
         print "user in db=", !User.find_by_email(@user.email).nil?
         print User.count
+        @user = Factory(:user)
+        print "user in db=", !User.find_by_email(@user.email).nil?
+        print User.count
         fill_in :email,    :with => @user.email
         fill_in :password, :with => @user.password
         click_button
         print controller.params.inspect
         print flash.inspect
-        flash[:error].should be_empty
+        flash[:error].should be_nil
       end
       
     end #success
