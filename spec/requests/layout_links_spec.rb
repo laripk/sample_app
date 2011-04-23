@@ -53,27 +53,17 @@ describe "LayoutLinks" do
   describe "when signed in" do
     
     before(:each) do
-      #print "BEFORE SIGN IN-"
-      @user = Factory(:user)
-      #print @user.inspect
-      #print User.find_by_email(@user.email).inspect
       visit signin_path
-      #print flash.inspect
-      #print @user.email, @user.password
+      @user = Factory(:user)
       fill_in :email,    :with => @user.email
       fill_in :password, :with => @user.password
       click_button
-      #print flash.inspect
-      #print "SIGNED IN"
     end
     
-    it "should have a signout link" #do
-      #print controller.inspect
-      #print flash.inspect
-      #print "Before Visit"
-#      visit root_path
-#      response.should have_selector("a", :href => signout_path, :content => "Sign out")
-#    end
+    it "should have a signout link" do
+      visit root_path
+      response.should have_selector("a", :href => signout_path, :content => "Sign out")
+    end
     
     it "should have a profile link"
     
