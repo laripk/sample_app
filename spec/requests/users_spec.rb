@@ -118,4 +118,88 @@ describe "Users" do
     
   end #sign in/out
   
+  describe "Factory_visit_problem" do
+    
+    describe "Factory then visit signin" do
+      it "should create a user" do
+        print "\nFac signin"
+        lambda do
+          user = Factory(:user)
+          visit signin_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory signin
+    
+    describe "visit signin then Factory" do
+      it "should create a user" do
+        print "\nsignin Fac"
+        lambda do
+          visit signin_path
+          user = Factory(:user)
+        end.should change(User, :count).by(1)
+      end
+    end #signin Factory
+    
+    describe "Factory then visit root" do
+      it "should create a user" do
+        print "\nFac root"
+        lambda do
+          user = Factory(:user)
+          visit root_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory root
+    
+    describe "Factory then visit signup" do
+      it "should create a user" do
+        print "\nFac signup"
+        lambda do
+          user = Factory(:user)
+          visit signup_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory signup
+    
+    describe "Factory then visit signout" do
+      it "should create a user" do
+        print "\nFac signout"
+        lambda do
+          user = Factory(:user)
+          visit signout_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory signout
+    
+    describe "Factory then visit contact" do
+      it "should create a user" do
+        print "\nFac contact"
+        lambda do
+          user = Factory(:user)
+          visit contact_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory contact
+    
+    describe "Factory then visit about" do
+      it "should create a user" do
+        print "\nFac about"
+        lambda do
+          user = Factory(:user)
+          visit about_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory about
+    
+    describe "Factory then visit help" do
+      it "should create a user" do
+        print "\nFac help"
+        lambda do
+          user = Factory(:user)
+          visit help_path
+        end.should change(User, :count).by(1)
+      end
+    end #Factory help
+    
+  end #factory visit
+  
 end

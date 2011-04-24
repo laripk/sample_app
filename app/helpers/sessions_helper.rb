@@ -13,8 +13,9 @@ module SessionsHelper
   end
   
   def current_user=(user)
-    print " cue", User.count
+    print " cueA", User.count
     @current_user = user
+    print " cueB", User.count
   end
   
   def current_user

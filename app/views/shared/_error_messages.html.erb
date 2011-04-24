@@ -1,4 +1,3 @@
-<% print " eA", User.count %>
 <% if @user.errors.any? %>
 	<div id="error_explanation">
 		<h2><%= pluralize(@user.errors.count, "error") %>
@@ -11,4 +10,3 @@
 		</ul>
 	</div>
 <% end %>
-<% print " eB", User.count %>
