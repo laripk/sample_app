@@ -34,5 +34,8 @@ So I can see now that the user is still there through the end of the page creati
 I'm stumped. What happens in between? How do I poke at it? OH! watch the test.log.... Well, the only enlightenment is that it only really asks the db for a user count at the beginning of the whole page, and returns caches of the query for the rest of the page. *But*, there's no delete nor truncate that I can see, *and yet* the second insert succeeds. Baffled.
 
 
+Began testing around the problem (rspec spec/ -e "Factory_visit_problem").
+Discovered that Factory-signout changes user count in the middle.
+Also noticed in webrat.log GETs to example.com, including what looks like the signout redirect.
 
 
