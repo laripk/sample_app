@@ -98,17 +98,17 @@ describe "Users" do
     describe "success" do
       
       it "should sign a user in and out" do
-          print " iA", User.count
+          # print " iA", User.count
         user = Factory(:user)
-          print " iB", User.count
+          # print " iB", User.count
         visit signin_path
-          print " iC", User.count
-        user = Factory(:user)
-          print " iD", User.count
+        #   print " iC", User.count
+        # user = Factory(:user)
+        #   print " iD", User.count
         fill_in :email,    :with => user.email
         fill_in :password, :with => user.password
         click_button
-        #integration_sign_in user
+        # integration_sign_in user
         controller.should be_signed_in
         click_link "Sign out"
         controller.should_not be_signed_in
@@ -122,7 +122,7 @@ describe "Users" do
     
     describe "Factory then visit signin" do
       it "should create a user" do
-        print "\nFac signin"
+        # print "\nFac signin"
         lambda do
           user = Factory(:user)
           visit signin_path
@@ -132,7 +132,7 @@ describe "Users" do
     
     describe "visit signin then Factory" do
       it "should create a user" do
-        print "\nsignin Fac"
+        # print "\nsignin Fac"
         lambda do
           visit signin_path
           user = Factory(:user)
@@ -142,7 +142,7 @@ describe "Users" do
     
     describe "Factory then visit root" do
       it "should create a user" do
-        print "\nFac root"
+        # print "\nFac root"
         lambda do
           user = Factory(:user)
           visit root_path
@@ -152,7 +152,7 @@ describe "Users" do
     
     describe "Factory then visit signup" do
       it "should create a user" do
-        print "\nFac signup"
+        # print "\nFac signup"
         lambda do
           user = Factory(:user)
           visit signup_path
@@ -162,9 +162,10 @@ describe "Users" do
     
     describe "Factory then visit signout" do
       it "should create a user" do
-        print "\nFac signout"
+        # print "\nFac signout"
         lambda do
           user = Factory(:user)
+          # debugger
           visit signout_path
         end.should change(User, :count).by(1)
       end
@@ -172,7 +173,7 @@ describe "Users" do
     
     describe "Factory then visit contact" do
       it "should create a user" do
-        print "\nFac contact"
+        # print "\nFac contact"
         lambda do
           user = Factory(:user)
           visit contact_path
@@ -182,7 +183,7 @@ describe "Users" do
     
     describe "Factory then visit about" do
       it "should create a user" do
-        print "\nFac about"
+        # print "\nFac about"
         lambda do
           user = Factory(:user)
           visit about_path
@@ -192,7 +193,7 @@ describe "Users" do
     
     describe "Factory then visit help" do
       it "should create a user" do
-        print "\nFac help"
+        # print "\nFac help"
         lambda do
           user = Factory(:user)
           visit help_path

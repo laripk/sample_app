@@ -12,13 +12,14 @@ end
 
 group :test do 
 	gem 'rspec', '2.5.0' 
-	gem 'webrat', '0.7.3' 
+	gem 'webrat', '0.7.3'
 	gem 'spork', '0.9.0.rc5'
 	gem 'factory_girl_rails', '1.0.1'
 end
 
 group :development, :test do
-	gem 'database_cleaner', '0.6.7' 
+	gem 'database_cleaner', '0.6.7'
+	gem 'ruby-debug19', '0.11.6'
 end
 
 

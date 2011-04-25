@@ -1,1 +1,1 @@
-rvm ruby-1.9.2-head@rails3tutorial --create
+rvm ruby-1.9.2-p180@rails3tutorial --create

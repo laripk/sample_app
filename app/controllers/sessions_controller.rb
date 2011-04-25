@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
   
   def new
-    print " cnwA", User.count
+    # print " cnwA", User.count
     @title = "Sign in"
   end
   
   def create
-    print " csvA", User.count
+    # print " csvA", User.count
     usermsg = User.authenticate(params[:session][:email], 
                                 params[:session][:password])
     user = usermsg[0]
@@ -22,11 +22,11 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-      print " csoA", User.count
+      # print " csoA", User.count
     sign_out
-      print " csoB", User.count
+      # print " csoB", User.count
     redirect_to root_path
-      print " csoC", User.count
+      # print " csoC", User.count
   end
 
 end
