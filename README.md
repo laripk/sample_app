@@ -38,4 +38,6 @@ Began testing around the problem (rspec spec/ -e "Factory_visit_problem").
 Discovered that Factory-signout changes user count in the middle.
 Also noticed in webrat.log GETs to example.com, including what looks like the signout redirect.
 
+Added debugger, which broke spork. Factory-visit issue mysteriously starting working correctly while debugging, so removed/commented out print statements. Also commented out call to debugger before check in.
+
 
