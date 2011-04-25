@@ -18,8 +18,9 @@ group :test do
 end
 
 group :development, :test do
+   gem 'watchr', '0.7'
 	gem 'database_cleaner', '0.6.7'
-	gem 'ruby-debug19', '0.11.6'
+   gem 'ruby-debug19', '0.11.6'
 end
 
 
