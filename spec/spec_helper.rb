@@ -13,8 +13,7 @@ Spork.prefork do
   # in ./support/ and its subdirectories
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   
-  
-
+ 
   Rspec.configure do |config|
     # == Mock Framework
     # If you prefer to use mocha, flexmock, or RR, uncomment the appropriate line:
@@ -49,10 +48,12 @@ Spork.prefork do
       controller.sign_in(user)
     end
 
-    def integration_sign_in(user)
+    def integration_sign_in(user, use_this_password=nil)
       visit signin_path
       fill_in :email,    :with => user.email
-      fill_in :password, :with => user.password
+      pw = use_this_password ? use_this_password : user.password
+      # print pw
+      fill_in :password, :with => pw
       click_button
     end
 

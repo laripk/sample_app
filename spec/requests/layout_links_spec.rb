@@ -53,11 +53,8 @@ describe "LayoutLinks" do
   describe "when signed in" do
     
     before(:each) do
-      visit signin_path
       @user = Factory(:user)
-      fill_in :email,    :with => @user.email
-      fill_in :password, :with => @user.password
-      click_button
+      integration_sign_in(@user)
     end
     
     it "should have a signout link" do

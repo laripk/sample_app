@@ -46,11 +46,7 @@ describe "Users" do
     describe "failure" do
       
       it "should have errors" do 
-        user = Factory(:user)
-        visit signin_path
-        fill_in :email,    :with => user.email
-        fill_in :password, :with => "invalid"
-        click_button
+        integration_sign_in(Factory(:user), "invalid")
         flash[:error].should_not be_empty
       end
       
@@ -59,21 +55,7 @@ describe "Users" do
     describe "success" do
       
       it "should have no errors" do
-        #print User.count
-        #user = Factory(:user)
-        #print "user in db=", !User.find_by_email(user.email).nil?
-        #print User.count
-        visit signin_path
-        #print "user in db=", !User.find_by_email(user.email).nil?
-        #print User.count
-        user = Factory(:user)
-        #print "user in db=", !User.find_by_email(user.email).nil?
-        #print User.count
-        fill_in :email,    :with => user.email
-        fill_in :password, :with => user.password
-        click_button
-        #print controller.params.inspect
-        #print flash.inspect
+        integration_sign_in(Factory(:user))
         flash[:error].should be_nil
       end
       
@@ -98,17 +80,7 @@ describe "Users" do
     describe "success" do
       
       it "should sign a user in and out" do
-          # print " iA", User.count
-        user = Factory(:user)
-          # print " iB", User.count
-        visit signin_path
-        #   print " iC", User.count
-        # user = Factory(:user)
-        #   print " iD", User.count
-        fill_in :email,    :with => user.email
-        fill_in :password, :with => user.password
-        click_button
-        # integration_sign_in user
+        integration_sign_in(Factory(:user))
         controller.should be_signed_in
         click_link "Sign out"
         controller.should_not be_signed_in
