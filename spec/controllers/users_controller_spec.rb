@@ -53,6 +53,24 @@ describe UsersController do
                                            :content => "Next")
       end
       
+      it "should hide delete links from non-admin users" do
+        get :index
+        @users[0..2].each do |user|
+          response.should_not have_selector("a", :content => "delete",
+                                                 :title => "Delete #{user.name}")
+        end
+      end
+      
+      it "should show delete links to admin users" do
+        admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(admin)
+        get :index
+        @users[0..2].each do |user|
+          response.should have_selector("a", :content => "delete",
+                                             :title => "Delete #{user.name}")
+        end
+      end
+      
     end #signed in
     
   end #get index
