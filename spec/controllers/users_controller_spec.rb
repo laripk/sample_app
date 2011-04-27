@@ -182,6 +182,36 @@ describe UsersController do
     end #success
     
   end #post create
+  
+  describe "authentication of new/create pages" do
+    
+    describe "for signed-in users" do
+      
+      before(:each) do
+        test_sign_in(Factory(:user))
+      end
+      
+      it "should deny access to 'new'" do
+        get :new
+        response.should redirect_to(root_path)
+      end
+      
+      it "should deny access to 'create'" do
+        post :create, :user => {}
+        response.should redirect_to(root_path)
+      end
+      
+    end #signed in
+    
+    # describe "for non-signed-in users" do
+    #   
+    #   it "should allow access to 'new'" 
+    #   
+    #   it "should allow access to 'create'"
+    #   
+    # end #not signed in
+    
+  end #auth new/create
 
   describe "GET 'edit'" do
     
@@ -285,7 +315,7 @@ describe UsersController do
     describe "for signed-in users" do
       
       before(:each) do
-        wrong_user = Factory(:user, :email => "user@exampe.net")
+        wrong_user = Factory(:user, :email => "user@example.net")
         test_sign_in wrong_user
       end
       
