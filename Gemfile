@@ -9,6 +9,7 @@ group :development do
 	gem 'rspec-rails', '2.5.0' 
 	gem 'annotate-models', '1.0.4'
 	gem 'term-ansicolor', '1.0.5'
+	gem 'heroku', '1.20.1'
 	gem 'faker', '0.3.1' # really? gem says current version is 0.9.5
 end 
 
@@ -20,9 +21,9 @@ group :test do
 end
 
 group :development, :test do
-   gem 'watchr', '0.7'
+  gem 'watchr', '0.7'
 	gem 'database_cleaner', '0.6.7'
-   # gem 'ruby-debug19', '0.11.6'
+  # gem 'ruby-debug19', '0.11.6'
 end
 
 

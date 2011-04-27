@@ -175,4 +175,26 @@ describe "Users" do
     
   end #factory visit
   
+  describe "users list" do
+    
+    describe "admins" do
+      it "should see delete links" do
+        admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        integration_sign_in(admin)
+        visit users_path
+        response.should have_selector("a", :content => "delete")
+      end
+    end #admins
+    
+    describe "non-admins" do
+      it "should not see delete links" do
+        user = Factory(:user)
+        integration_sign_in(user)
+        visit users_path
+        response.should_not have_selector("a", :content => "delete")
+      end
+    end #non-admins
+    
+  end #users list
+  
 end
