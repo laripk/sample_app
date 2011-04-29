@@ -391,6 +391,7 @@ describe UsersController do
         lambda do
           delete :destroy, :id => @user
         end.should change(User, :count).by(-1)
+        User.find_by_id(@user.id).should be_nil
       end
       
       it "should redirect to the users page" do

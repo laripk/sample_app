@@ -72,4 +72,41 @@ describe MicropostsController do
     
   end #post create
   
+  describe "DELETE 'destroy'" do
+    
+    describe "for an unauthorized user" do
+      
+      before(:each) do
+        @user = Factory(:user)
+        wrong_user = Factory(:user, :email => Factory.next(:email))
+        test_sign_in(wrong_user)
+        @micropost = Factory(:micropost, :user => @user)
+      end
+      # why is there a before when we only have one test?
+      # maybe to parallel and contrast with the auth user section
+      it "should deny access" do
+        delete :destroy, :id => @micropost
+        response.should redirect_to(root_path)
+      end
+      
+    end #unauth user
+    
+    describe "for an authorized user" do
+      
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        @micropost = Factory(:micropost, :user => @user)
+      end
+      
+      it "should destroy the micropost" do
+        lambda do
+          delete :destroy, :id => @micropost
+        end.should change(Micropost, :count).by(-1)
+        Micropost.find_by_id(@micropost.id).should be_nil
+      end
+      
+    end #auth user
+    
+  end #delete destroy
+  
 end

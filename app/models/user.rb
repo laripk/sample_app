@@ -13,7 +13,7 @@
 #  admin              :boolean
 #
 
-require 'digest' # used to access secure hash algorithm (require not necessary on all systems)
+require 'digest' # used to access secure hash algorithm (require not needed on all systems)
 
 class User < ActiveRecord::Base
   attr_accessor :password
@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
   
+  def feed
+    # NOTE: prelminary
+    Micropost.where("user_id = ?", id)
+  end
   
   private
   
