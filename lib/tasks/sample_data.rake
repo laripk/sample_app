@@ -28,10 +28,10 @@ def make_users
 end
 
 def make_microposts
-  User.all(:limit => 6).each do |user|
-    50.times do
-      user.microposts.create!(:content => Faker::Lorem.sentence(5))
-    end
+  users = User.all[0..5]
+  250.times do
+    u = randint_between(0, 5)
+    users[u].microposts.create!(:content => Faker::Lorem.sentence(5))
   end
 end
 
@@ -42,4 +42,8 @@ def make_relationships
   followers = users[3..40]
   following.each {|followed| user.follow!(followed) }
   followers.each {|follower| follower.follow!(user) }
+end
+
+def randint_between(bottom, top)
+  rand(top - bottom + 1) + bottom
 end
