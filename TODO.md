@@ -31,6 +31,11 @@
 
 4. Refactor Listing 12.30 by adding partials for the code common to the following/followers pages, the Home page, and the user show page. 
 
+5. Following the model in Listing 12.20, write tests for the stats on the proﬁle page. 
+
+6. Write an integration test for following and unfollowing a user. 
+
+7. Rewrite the Ajax methods from Section 12.2.5 using jQuery in place of Prototype. Hint: You might want to read the jQuery section of Mikel Lindsaar’s blog post about jQuery, RSpec, and Rails 3.
 
 
 ## extension suggestions
