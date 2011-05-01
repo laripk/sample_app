@@ -1,5 +1,5 @@
 
-- exercises at end of ch 11
+# exercises at end of ch 11
 
 1. (challenging) Add a JavaScript display to the Home page to count down from 140 characters. 
 
@@ -19,9 +19,9 @@
 
 
 
-- chapter 12 exercises and extension suggestions
+# chapter 12 exercises and extension suggestions
 
--- exercises
+## exercises
 
 1. Add tests for dependent :destroy in the Relationship model (Listing 12.5 and Listing 12.17) by following the example in Listing 11.11. 
 
@@ -33,23 +33,23 @@
 
 
 
--- extension suggestions
+## extension suggestions
 
---- replies
+- replies
 
---- direct messaging
+- direct messaging
 
---- follower notifications
+- follower notifications
 
---- password reminders
+- password reminders
 
---- signup email confirmation
+- signup email confirmation
 
---- rss feed
+- rss feed
 
---- rest api
+- rest api
 
---- search - users, microposts
+- search - users, microposts
 
 
 
