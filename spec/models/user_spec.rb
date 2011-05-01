@@ -175,7 +175,7 @@ describe User do
     
     it "should have the right microposts in the right order" do
       @user.microposts.should == [@u1mp2, @u1mp1]
-      @user.microposts.should_not include(@u2mp3) # I just felt the need to emphasise this
+      @user.microposts.should_not include(@u2mp3) # I just felt the need to emphasise this, since we said "the right microposts"
     end
     
     it "should destroy associated microposts" do
@@ -196,12 +196,19 @@ describe User do
       end
       
       it "should include the user's microposts" do
-        @user.feed.include?(@u1mp1).should be_true
-        @user.feed.include?(@u1mp2).should be_true
+        @user.feed.should include(@u1mp1)
+        @user.feed.should include(@u1mp2)
       end
       
       it "should not include a different user's microposts" do
-        @user.feed.include?(@u2mp3).should be_false
+        @user.feed.should_not include(@u2mp3)
+      end
+      
+      it "should include the microposts of followed users" do
+        followed = Factory(:user, :email => Factory.next(:email))
+        mp4 = Factory(:micropost, :user => followed)
+        @user.follow!(followed)
+        @user.feed.should include(mp4)
       end
       
     end #feed
